@@ -12,7 +12,6 @@
 <script>
 import { useCartStore } from "./store/cartStore"; 
 import { computed } from "vue"; 
-import './assets/styles/Header.scss';
 import LoadingOverlay from "./components/LoadingOverlay.vue";
 import { useLoadingStore } from "./store/loadingStore"; 
 import Header from "./components/Header.vue";

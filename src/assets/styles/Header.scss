@@ -1,0 +1,63 @@
+$header-bg: #f8f9fa; 
+$text-color: #ffff; 
+$header-text-color: #000; 
+$header-hover-text-color: #0c427c;
+$nav-link-hover-bg: rgba(255, 255, 255, 0.2); 
+$btn-bg: #007bff; 
+$btn-hover-bg: #0056b3;
+$header-bg: #f8f9fa;
+$btn-bg: #0c427c;
+$btn-hover-bg: #0056b3;
+
+
+.header {
+  background-color: $header-bg;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: $header-text-color;
+
+  .navbar {
+    display: flex;
+    gap: 20px;
+
+    .nav-link {
+      text-decoration: none;
+      font-size: 1rem;
+      color: $header-text-color;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+
+      &:hover {
+        background-color: $nav-link-hover-bg;
+        color: $header-hover-text-color;
+      }
+      i {
+        font-size: 1.2rem; 
+      }
+    }
+  }
+}
+
+.change-color-btn {
+  display: block;
+  margin: 20px auto;
+  padding: 8px 16px;
+  background-color: $btn-bg;
+  color: $text-color;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: $btn-hover-bg;
+  }
+  &:paused {
+    border: none;
+  }
+}
