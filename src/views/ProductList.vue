@@ -7,7 +7,6 @@
         <div class="product-info">
           <h2 class="product-title">{{ product.title }}</h2>
           <p class="product-price">${{ product.price }}</p>
-
           <div v-if="isInCart(product.id)" class="quantity-controls">
             <button @click="decreaseQuantity(product.id)" class="quantity-btn">-</button>
             <span class="quantity">{{ getQuantity(product.id) }}</span>
@@ -17,6 +16,9 @@
         </div>
       </div>
     </div>
+    <div v-if="errorMessage" class="error-message">
+       {{ errorMessage }}
+    </div>
   </div>
 </template>
   
@@ -25,14 +27,24 @@
 import { useCartStore } from "../store/cartStore";
 import "../assets/styles/Product.scss";
 import { useLoadingStore } from "../store/loadingStore";
+import { useCart } from "../composables/useCart";
 export default {
- 
+  setup() {
+    const { addToCart, increaseQuantity, decreaseQuantity, isInCart, getQuantity } = useCart();
+    return {
+      addToCart,
+      increaseQuantity,
+      decreaseQuantity,
+      isInCart,
+      getQuantity,
+    };
+  },
   data() {
     return {
       products: [],
+      errorMessage: "",
     };
   },
- 
 
   async created() {
     const loadingStore = useLoadingStore();
@@ -41,46 +53,21 @@ export default {
       const response = await axios.get(`https://dummyjson.com/product`);
       this.products = response.data.products;
     } catch (error) {
+
+      this.errorMessage = "Failed to load products. Please try again later.";
       console.error("Failed to fetch products:", error);
     } finally {
+     
       loadingStore.stopLoading();
     }
   },
   computed: {
-    cartStore() {
+      cartStore() {
       return useCartStore();
     },
   },
-  methods: {
-
-    addToCart(product) {
-      this.cartStore.addToCart(product);
-    },
-    increaseQuantity(productId) {
-      const product = this.cartStore.cartItems.find((item) => item.id === productId);
-      if (product) {
-        this.cartStore.updateQuantity(productId, product.quantity + 1);
-      }
-    },
-    decreaseQuantity(productId) {
-      const product = this.cartStore.cartItems.find((item) => item.id === productId);
-      if (product) {
-        if (product.quantity > 1) {
-          this.cartStore.updateQuantity(productId, product.quantity - 1);
-        } else {
-          this.cartStore.removeFromCart(productId);
-        }
-      }
-    },
-    isInCart(productId) {
-      return this.cartStore.cartItems.some((item) => item.id === productId);
-    },
-    getQuantity(productId) {
-      const product = this.cartStore.cartItems.find((item) => item.id === productId);
-      return product ? product.quantity : 0;
-    },
-  },
 };
+
   </script>
 
 

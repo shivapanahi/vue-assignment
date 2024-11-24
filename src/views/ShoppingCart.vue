@@ -20,6 +20,7 @@ import { useCartStore } from "../store/cartStore";
 import CartItem from "../components/CartItem.vue";
 import CartSummary from "../components/CartSummary.vue";
 import "../assets/styles/ShoppingCart.scss";
+import { useCart } from "../composables/useCart";
 
 export default {
   components: { CartItem, CartSummary },
@@ -31,29 +32,15 @@ export default {
       return useCartStore().totalPrice;
     },
   },
-  methods: {
-    increaseQuantity(productId) {
-      const cartStore = useCartStore();
-      const product = cartStore.cartItems.find((item) => item.id === productId);
-      if (product) {
-        cartStore.updateQuantity(productId, product.quantity + 1);
-      }
-    },
-    decreaseQuantity(productId) {
-      const cartStore = useCartStore();
-      const product = cartStore.cartItems.find((item) => item.id === productId);
-      if (product) {
-        if (product.quantity > 1) {
-          cartStore.updateQuantity(productId, product.quantity - 1);
-        } else {
-          cartStore.removeFromCart(productId);
-        }
-      }
-    },
-    removeFromCart(productId) {
-      const cartStore = useCartStore();
-      cartStore.removeFromCart(productId);
-    },
+  setup() {
+    const { increaseQuantity, decreaseQuantity, getQuantity,removeFromCart } = useCart();
+
+    return {
+      increaseQuantity,
+      decreaseQuantity,
+      getQuantity,
+      removeFromCart
+    };
   },
 };
 </script>
