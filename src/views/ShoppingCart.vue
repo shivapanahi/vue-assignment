@@ -19,7 +19,7 @@
 import { useCartStore } from "../store/cartStore";
 import CartItem from "../components/CartItem.vue";
 import CartSummary from "../components/CartSummary.vue";
-
+import "../assets/styles/ShoppingCart.scss";
 
 export default {
   components: { CartItem, CartSummary },

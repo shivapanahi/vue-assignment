@@ -23,6 +23,7 @@
   <script>
  import axios from "axios";
 import { useCartStore } from "../store/cartStore";
+import "../assets/styles/Product.scss";
 import { useLoadingStore } from "../store/loadingStore";
 export default {
  
