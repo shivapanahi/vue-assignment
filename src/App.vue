@@ -1,33 +1,40 @@
 <template>
-  <header :style="{ backgroundColor: headerBgColor }" class="header">
-    <nav class="navbar">
-      <router-link to="/" class="nav-link">Products</router-link>
-      <router-link to="/cart" class="nav-link">Cart ({{ totalPrice }})</router-link>
-    </nav>
-  </header>
-  <button class="change-color-btn" @click="changeColor">Change Header Color</button>
+  <!-- Shows a loading overlay if the app is in a loading state -->
+  <LoadingOverlay />
+  
+  <!-- Header section -->
+  <Header />
+  
+  <!-- Main content determined by the current route -->
   <router-view />
 </template>
 
 <script>
-import { useCartStore } from "./store/cartStore";
-import { computed } from "vue";
-import { ref } from "vue";
+import { useCartStore } from "./store/cartStore"; 
+import { computed } from "vue"; 
 import './assets/styles/Header.scss';
+import LoadingOverlay from "./components/LoadingOverlay.vue";
+import { useLoadingStore } from "./store/loadingStore"; 
+import Header from "./components/Header.vue";
 
 export default {
+  components: {
+    LoadingOverlay,
+    Header,
+  },
   setup() {
-    const headerBgColor = ref(import.meta.env.VITE_HEADER_BG_COLOR);
-    const cartStore = useCartStore();
-    const totalPrice = computed(() => cartStore.totalPrice); 
-    const changeColor = () => {
-      headerBgColor.value = headerBgColor.value === "#f8f9fa" ? "#007bff" : "#f8f9fa";
-    };
+    const loadingStore = useLoadingStore(); 
+    const cartStore = useCartStore(); 
+
+    // Total price of items in the cart
+    const totalPrice = computed(() => cartStore.totalPrice);
+
     return {
       totalPrice,
-      headerBgColor,
-      changeColor
+      isLoading: loadingStore.isLoading, 
     };
   },
 };
 </script>
+
+
