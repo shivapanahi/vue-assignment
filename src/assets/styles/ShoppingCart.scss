@@ -1,15 +1,16 @@
 @import "variables";
 @import "global.scss";
 
-// صفحه کلی
+// Shopping cart styles
 .shopping-cart {
   max-width: 1200px;
-  margin: 3rem auto; // اضافه کردن فاصله از بالا (2rem)
+  margin: 3rem auto; 
   padding: 2rem;
   background-color: $background-color;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
+  // Page title styles
   .page-title {
     text-align: center;
     font-size: 2rem;
@@ -17,6 +18,7 @@
     color: $text-color;
   }
 
+  // Cart items grid
   .cart-items {
     display: grid;
     grid-template-columns: 1fr;
@@ -26,6 +28,7 @@
     }
   }
 
+  // Individual cart item
   .cart-item {
     display: flex;
     align-items: center;
@@ -40,6 +43,7 @@
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     }
 
+    // Cart item image
     .cart-item-image {
       width: 80px;
       height: 80px;
@@ -48,6 +52,7 @@
       margin-right: 1rem;
     }
 
+    // Cart item info (title and price)
     .cart-item-info {
       flex: 1;
 
@@ -64,6 +69,7 @@
       }
     }
 
+    // Remove button
     .remove-btn {
       background: $primary-color;
       color: #fff;
@@ -79,6 +85,7 @@
     }
   }
 
+  // Cart summary (total price)
   .cart-summary {
     margin-top: 2rem;
     text-align: right;
@@ -91,7 +98,7 @@
   }
 }
 
-
+// remove button
 .remove-btn {
   background-color: red;
   color: white;
@@ -105,4 +112,3 @@
     background-color: darkred;
   }
 }
-

@@ -1,12 +1,10 @@
 <template>
-  <!-- Shows a loading overlay if the app is in a loading state -->
   <LoadingOverlay />
-  
-  <!-- Header section -->
+
   <Header />
-  
-  <!-- Main content determined by the current route -->
+
   <router-view />
+
 </template>
 
 <script>
@@ -25,7 +23,6 @@ export default {
     const loadingStore = useLoadingStore(); 
     const cartStore = useCartStore(); 
 
-    // Total price of items in the cart
     const totalPrice = computed(() => cartStore.totalPrice);
 
     return {

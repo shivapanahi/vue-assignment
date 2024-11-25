@@ -1,4 +1,3 @@
-// composables/useCart.js
 import { useCartStore } from "../store/cartStore";
 
 export function useCart() {
