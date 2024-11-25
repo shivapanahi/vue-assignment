@@ -1,21 +1,11 @@
-// 1. متغیرها برای استفاده مجدد
-$page-title-color: #333;
-$product-border-color: #ddd;
-$product-card-shadow: rgba(0, 0, 0, 0.1);
-$product-card-hover-shadow: rgba(0, 0, 0, 0.2);
-$product-title-color: #333;
-$product-price-color: #666;
-$btn-bg-color: #0d6efd;
-$btn-hover-bg-color: #0b5ed7;
-$grid-gap: 1rem;
-$grid-padding: 1rem;
-$grid-max-width: 1200px;
+@import "variables";
+@import "global.scss";
 
 // 2. استایل‌های صفحه
 .page-title {
   text-align: center;
-  font-size: 2rem;
-  margin: 1rem 0;
+  font-size: $font-size-title;
+  margin: 3rem auto; 
   color: $page-title-color;
 }
 
@@ -53,12 +43,14 @@ $grid-max-width: 1200px;
     .product-info {
       padding: 1rem;
       text-align: center;
-
       .product-title {
         font-size: 1.2rem;
         font-weight: bold;
         margin: 0.5rem 0;
         color: $product-title-color;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
 
       .product-price {
@@ -69,6 +61,7 @@ $grid-max-width: 1200px;
 
       // دکمه افزودن به سبد خرید
       .add-to-cart-btn {
+        @extend .btn;
         background: $btn-bg-color;
         color: #fff;
         padding: 0.5rem 1rem;
@@ -84,31 +77,5 @@ $grid-max-width: 1200px;
     }
   }
 }
-.quantity-controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
 
-  .quantity-btn {
-    background-color: #0d6efd;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    font-size: 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-
-    &:hover {
-      background-color: #0056b3;
-    }
-  }
-
-  .quantity {
-    font-size: 1rem;
-    font-weight: bold;
-    color: #333;
-  }
-}
 

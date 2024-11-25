@@ -1,14 +1,4 @@
-$header-bg: #f8f9fa; 
-$text-color: #ffff; 
-$header-text-color: #000; 
-$header-hover-text-color: #0c427c;
-$nav-link-hover-bg: rgba(255, 255, 255, 0.2); 
-$btn-bg: #007bff; 
-$btn-hover-bg: #0056b3;
-$header-bg: #f8f9fa;
-$btn-bg: #0c427c;
-$btn-hover-bg: #0056b3;
-
+@import "variables";
 
 .header {
   background-color: $header-bg;
@@ -41,23 +31,27 @@ $btn-hover-bg: #0056b3;
     }
   }
 }
-
 .change-color-btn {
-  display: block;
-  margin: 20px auto;
-  padding: 8px 16px;
-  background-color: $btn-bg;
-  color: $text-color;
+  background: none;
   border: none;
-  border-radius: 4px;
+  color: #333;
   font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  transition: color 0.2s ease-in-out;
 
   &:hover {
-    background-color: $btn-hover-bg;
+    color: $header-hover-text-color;
   }
-  &:paused {
-    border: none;
+
+  &:focus {
+    outline: none;
+  }
+
+  i {
+    font-size: 1.2rem;
   }
 }
