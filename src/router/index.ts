@@ -1,9 +1,10 @@
-import { createRouter, createWebHistory } from "vue-router";
-import ProductList from "../views/ProductList.vue";
-import ShoppingCart from "../views/ShoppingCart.vue";
+import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import { useLoadingStore } from "../store/loadingStore";
 
-const routes = [
+const ProductList = () => import("../views/ProductList.vue");
+const ShoppingCart = () => import("../views/ShoppingCart.vue");
+
+const routes: Array<RouteRecordRaw> = [
   { path: "/", component: ProductList },
   { path: "/cart", component: ShoppingCart },
 ];
@@ -12,6 +13,7 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
 });
+
 router.beforeEach((to, from, next) => {
   const loadingStore = useLoadingStore();
   loadingStore.startLoading();
