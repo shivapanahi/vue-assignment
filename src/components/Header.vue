@@ -7,7 +7,9 @@
       <router-link to="/cart" class="nav-link">
         <i class="fas fa-shopping-cart"></i> Cart ({{ totalPrice }})
       </router-link>
-      <button class="change-color-btn" @click="changeColor">Change Header Color</button>
+      <button class="change-color-btn" @click="changeColor">
+        <i class="fas fa-palette"></i> 
+        Change Header Color</button>
     </nav>
   </header>
 </template>
