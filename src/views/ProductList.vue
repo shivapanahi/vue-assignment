@@ -16,7 +16,7 @@
         </div>
       </div>
     </div>
-    <div v-if="errorMessage" class="error-message">
+    <div v-if="errorMessage" class="message error">
        {{ errorMessage }}
     </div>
   </div>
@@ -53,11 +53,8 @@ export default {
       const response = await axios.get(`https://dummyjson.com/product`);
       this.products = response.data.products;
     } catch (error) {
-
       this.errorMessage = "Failed to load products. Please try again later.";
-      console.error("Failed to fetch products:", error);
-    } finally {
-     
+    } finally {  
       loadingStore.stopLoading();
     }
   },

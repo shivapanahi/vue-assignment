@@ -20,6 +20,12 @@ $product-title-color: #333;
 $product-price-color: #666;
 $btn-bg-color: #0d6efd;
 $btn-hover-bg-color: #0b5ed7;
+$background-color-error-message: rgba(255, 0, 0, 0.1);
+$text-color-error-message: #721c24;
+$background-color-success-message: rgba(0, 255, 0, 0.1);
+$text-color-success-message: #155724;
+$background-color-warning-message: rgba(255, 255, 0, 0.1);
+$text-color-warning-message: #856404;
 
 // grid
 $grid-gap: 1rem;
@@ -29,7 +35,7 @@ $grid-max-width: 1200px;
 
 //fonts
 $font-size-base: 1rem;
-$font-size-title: 1.2rem;
+$font-size-title: 2rem;
 
 
 //products
@@ -54,3 +60,9 @@ $border-color: #ddd;
 $text-color: #333;
 $price-color: #666;
 $background-color: #f8f9fa;
+
+
+//borderradius
+$border-radius-btn:4px;
+$border-radius-card:4px;
+
