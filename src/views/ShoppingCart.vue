@@ -1,6 +1,7 @@
 <template>
   <div class="shopping-cart">
-    <h1 class="page-title">Shopping Cart</h1>
+    <h1 class="page-title">{{ t('shopping_cart') }}
+    </h1>
     <div class="cart-items">
       <CartItem
         v-for="item in cartItems"
@@ -20,6 +21,7 @@ import { useCartStore } from "../store/cartStore";
 import CartItem from "../components/CartItem.vue";
 import CartSummary from "../components/CartSummary.vue";
 import "../assets/styles/ShoppingCart.scss";
+import { useI18n } from "vue-i18n";
 import { useCart } from "../composables/useCart";
 
 export default {
@@ -33,13 +35,15 @@ export default {
     },
   },
   setup() {
+    const { t, locale } = useI18n();
     const { increaseQuantity, decreaseQuantity, getQuantity,removeFromCart } = useCart();
 
     return {
       increaseQuantity,
       decreaseQuantity,
       getQuantity,
-      removeFromCart
+      removeFromCart,
+      t
     };
   },
 };

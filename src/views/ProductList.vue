@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="page-title">Product List</h1>
+    <h1 class="page-title">{{ t('product_list')}}</h1>
     <div class="product-grid">
       <div v-for="product in products" :key="product.id" class="product-card">
         <img :src="product.thumbnail" :alt="product.title" class="product-image" />
@@ -12,7 +12,7 @@
             <span class="quantity">{{ getQuantity(product.id) }}</span>
             <button @click="increaseQuantity(product.id)" class="quantity-btn">+</button>
           </div>
-          <button v-else @click="addToCart(product)" class="add-to-cart-btn">Add to Cart</button>
+          <button v-else @click="addToCart(product)" class="add-to-cart-btn">{{ t('add_to_cart') }}</button>
         </div>
       </div>
     </div>
@@ -29,8 +29,11 @@ import "../assets/styles/Product.scss";
 import { useLoadingStore } from "../store/loadingStore";
 import { useCart } from "../composables/useCart";
 import { getProducts } from "../services/productService";
+import { useI18n } from "vue-i18n";
 export default {
   setup() {
+    const { t, locale } = useI18n();
+
     const { addToCart, increaseQuantity, decreaseQuantity, isInCart, getQuantity } = useCart();
     return {
       addToCart,
@@ -38,6 +41,7 @@ export default {
       decreaseQuantity,
       isInCart,
       getQuantity,
+      t
     };
   },
   data() {

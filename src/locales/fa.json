@@ -3,7 +3,12 @@
   "cart": "سبد خرید",
   "total_price": "قیمت کل: {price}",
   "change_language": "تغییر زبان",
-  "change_color": "تغییر رنگ"
+  "change_color": "تغییر رنگ",
+  "remove":"حذف",
+  "price":"قیمت",
+  "add_to_cart":"افزودن به سبد خرید",
+  "shopping_cart":"سبد خرید فروشگاه",
+  "product_list":"لیست محصولات"
 }
 
   
