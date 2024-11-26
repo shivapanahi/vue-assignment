@@ -28,6 +28,7 @@ import { useCartStore } from "../store/cartStore";
 import "../assets/styles/Product.scss";
 import { useLoadingStore } from "../store/loadingStore";
 import { useCart } from "../composables/useCart";
+import { getProducts } from "../services/productService";
 export default {
   setup() {
     const { addToCart, increaseQuantity, decreaseQuantity, isInCart, getQuantity } = useCart();
@@ -50,7 +51,7 @@ export default {
     const loadingStore = useLoadingStore();
     try {
       loadingStore.startLoading();
-      const response = await axios.get(`https://dummyjson.com/product`);
+      const response = await getProducts();
       this.products = response.data.products;
     } catch (error) {
       this.errorMessage = "Failed to load products. Please try again later.";
