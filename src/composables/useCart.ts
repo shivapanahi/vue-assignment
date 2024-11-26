@@ -1,22 +1,23 @@
 import { useCartStore } from "../store/cartStore";
+import type { Product } from "../store/cartStore"; // ایمپورت تایپ Product
 
 export function useCart() {
   const cartStore = useCartStore();
 
-  const addToCart = (product) => {
+  const addToCart = (product: Product) => {
     cartStore.addToCart(product);
   };
 
-  const increaseQuantity = (productId) => {
+  const increaseQuantity = (productId: number) => {
     const product = cartStore.cartItems.find((item) => item.id === productId);
-    if (product) {
+    if (product && product.quantity !== undefined) {
       cartStore.updateQuantity(productId, product.quantity + 1);
     }
   };
 
-  const decreaseQuantity = (productId) => {
+  const decreaseQuantity = (productId: number) => {
     const product = cartStore.cartItems.find((item) => item.id === productId);
-    if (product) {
+    if (product && product.quantity !== undefined) {
       if (product.quantity > 1) {
         cartStore.updateQuantity(productId, product.quantity - 1);
       } else {
@@ -25,18 +26,18 @@ export function useCart() {
     }
   };
 
-  const isInCart = (productId) => {
+  const isInCart = (productId: number): boolean => {
     return cartStore.cartItems.some((item) => item.id === productId);
   };
 
-  const getQuantity = (productId) => {
+  const getQuantity = (productId: number): number => {
     const product = cartStore.cartItems.find((item) => item.id === productId);
-    return product ? product.quantity : 0;
+    return product?.quantity || 0;
   };
- const removeFromCart=(productId)=> {
-    const cartStore = useCartStore();
+
+  const removeFromCart = (productId: number) => {
     cartStore.removeFromCart(productId);
-  }
+  };
 
   return {
     addToCart,
@@ -44,6 +45,6 @@ export function useCart() {
     decreaseQuantity,
     isInCart,
     getQuantity,
-    removeFromCart
+    removeFromCart,
   };
 }
