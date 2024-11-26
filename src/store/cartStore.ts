@@ -14,10 +14,13 @@ interface CartState {
 
 export const useCartStore = defineStore("cart", {
   state: (): CartState => ({
-    cartItems: [],
+    cartItems: JSON.parse(localStorage.getItem("cartItems") || "[]"),
   }),
   
   actions: {
+    saveToLocalStorage() {
+      localStorage.setItem("cartItems", JSON.stringify(this.cartItems)); 
+    },
     addToCart(product: Product) {
       const existing = this.cartItems.find((item) => item.id === product.id);
       if (existing) {
@@ -25,7 +28,7 @@ export const useCartStore = defineStore("cart", {
       } else {
         this.cartItems.push({ ...product, quantity: 1 });
       }
-      console.log("Cart Items Updated:", this.cartItems);
+      this.saveToLocalStorage(); 
     },
 
     removeFromCart(productId: number) {
@@ -37,6 +40,7 @@ export const useCartStore = defineStore("cart", {
       if (product) {
         product.quantity = quantity;
       }
+      this.saveToLocalStorage();
     },
   },
 
