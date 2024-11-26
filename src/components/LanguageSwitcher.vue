@@ -18,6 +18,7 @@
   import { defineComponent, computed } from "vue";
   import { useI18n } from "vue-i18n";
   import { useLanguageStore } from "../store/languageStore";
+import { useDirectionStore } from "../store/directionStore";
   
   export default defineComponent({
     name: "LanguageSwitcher",
@@ -33,10 +34,11 @@
         en: t("English"),
         fa: t("فارسی"),
       };
-  
+      const directionStore = useDirectionStore();
       const changeLanguage = (lang: string) => {
         languageStore.changeLanguage(lang);
         locale.value = lang;
+        directionStore.setDirection(lang === "fa" ? "rtl" : "ltr");
       };
   
       return {

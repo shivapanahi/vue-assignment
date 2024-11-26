@@ -13,7 +13,10 @@
   .navbar {
     display: flex;
     gap: 20px;
-
+    justify-content: flex-start;
+    body.rtl & {
+      justify-content: flex-end;
+    }
     .nav-link {
       text-decoration: none;
       font-size: 1rem;
@@ -22,16 +25,22 @@
       border-radius: 4px;
       transition: background-color 0.3s ease, color 0.3s ease;
 
+      body.rtl & {
+        margin-left: 0;
+        margin-right: 1rem;
+      }
       &:hover {
         background-color: $nav-link-hover-bg;
         color: $header-hover-text-color;
       }
+
       i {
-        font-size: 1.2rem; 
+        font-size: 1.2rem;
       }
     }
   }
 }
+
 .change-color-btn {
   background: none;
   border: none;
@@ -56,6 +65,7 @@
     font-size: 1.2rem;
   }
 }
+
 .language-switcher {
   display: flex;
   gap: 10px;
@@ -75,4 +85,3 @@
   background-color: #007bff;
   color: white;
 }
-
