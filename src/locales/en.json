@@ -1,6 +1,7 @@
 {
-    "Products": "hhhhhh",
-    "cart": "Cart",
-    "total_price": "Total Price: {price}"
-  }
-  
+  "products": "Products",
+  "cart": "Cart",
+  "total_price": "Total Price: {price}",
+  "change_language": "Change Language",
+  "change_color": "change color"
+}

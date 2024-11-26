@@ -1,6 +1,9 @@
 {
-    "Products": "سلام",
-    "cart": "سبد خرید",
-    "total_price": "قیمت کل: {price}"
-  }
+  "products": "محصولات",
+  "cart": "سبد خرید",
+  "total_price": "قیمت کل: {price}",
+  "change_language": "تغییر زبان",
+  "change_color": "تغییر رنگ"
+}
+
   
