@@ -8,5 +8,7 @@
   "price":"price",
   "add_to_cart":"add to cart",
   "shopping_cart":"Shopping Cart",
-  "product_list":"Product List"
+  "product_list":"Product List",
+  "English": "English",
+  "فارسی": "فارسی"
 }
